@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {FormGroup, Label, Input} from 'reactstrap';
 
+import './radio.scss';
+
 export class Radio extends Component {
   static propTypes = {
     answers: PropTypes.array,
@@ -22,11 +24,11 @@ export class Radio extends Component {
         <Input type='radio' name={name} value={item.value}/>
         {item.label}
       </Label>
-    ))
+    ));
 
     return (
       <FormGroup>
-        <h2>{question}</h2>
+        <h2 className="title-radio">{question}</h2>
         {list}
       </FormGroup>
     )

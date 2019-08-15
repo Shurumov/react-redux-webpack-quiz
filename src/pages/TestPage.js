@@ -1,11 +1,25 @@
 import React, {Fragment} from 'react';
-import {Radio} from 'components';
+import {Radio, Button} from 'components';
+
 
 export default class TestPage extends React.Component {
   render() {
     return (
       <Fragment>
         <h1>Ха</h1>
+        <Button
+          type="button"
+          onClick={()=>{console.log(1);}}
+        >
+          Кнопка
+        </Button>
+        <Button
+          type="button"
+          onClick={()=>{console.log(1);}}
+          disabled
+        >
+          Кнопка
+        </Button>
         <Radio
           name="1"
           question='Квuestion'

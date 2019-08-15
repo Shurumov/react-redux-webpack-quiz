@@ -1,0 +1,25 @@
+button {
+  position: relative;
+  cursor: pointer;
+  border: none;
+  height: 40px;
+  font-weight: bold;
+  font-family: 'Montserrat', sans-serif;
+  border-radius: 21px;
+  color: $white;
+  background: $persian-red;
+  user-select: none;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 11px 30px;
+  &:disabled {
+    cursor: default;
+  }
+  &:hover,
+  &:focus {
+    outline: none;
+    background: $persian-red-light;
+  }
+}
