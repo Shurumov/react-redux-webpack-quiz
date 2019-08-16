@@ -13,7 +13,6 @@ export function getQuestions(amount) {
     dispatch(changeProcessingState(true));
 
     const response = await axios.get(API_METHODS.QUESTIONS);
-    console.log(response);
     dispatch(changeProcessingState(false));
 
     if (!response) {

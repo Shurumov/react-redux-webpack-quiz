@@ -4,8 +4,8 @@ import loadable from '@loadable/component';
 import { Route, Switch } from 'react-router-dom';
 import { ROUTES } from 'config/constants';
 // common
-const TestPage = loadable(() => import(/* webpackPrefetch: true */ '../pages/TestPage'));
-const QuestionPage = loadable(() => import(/* webpackPrefetch: true */ '../pages/QuestionPage'));
+const TestPage = loadable(() => import(/* webpackPrefetch: true */ './TestPage'));
+const QuestionPage = loadable(() => import(/* webpackPrefetch: true */ './QuestionsPage'));
 
 class Router extends React.PureComponent {
     render() {

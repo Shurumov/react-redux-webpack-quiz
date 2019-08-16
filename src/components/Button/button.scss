@@ -16,6 +16,10 @@ button {
   padding: 11px 30px;
   &:disabled {
     cursor: default;
+    background-color: $gray;
+    &:hover, &:focus {
+      background: $gray;
+    }
   }
   &:hover,
   &:focus {

@@ -9,6 +9,7 @@ export class Radio extends Component {
     answers: PropTypes.array,
     name: PropTypes.string,
     question: PropTypes.string,
+    onChange: PropTypes.func,
   };
 
   static defaultProps = {
@@ -17,20 +18,20 @@ export class Radio extends Component {
   };
 
   render() {
-    const {name, question, answers} = this.props;
+    const {name, question, answers, onChange} = this.props;
 
     const list = answers.map((item) => (
-      <FormGroup check>
-        <Label key={item.value}>
-          <Input type='radio' name={name} value={item.value}/>
-          {item.label}
+      <FormGroup check key={item}>
+        <Label>
+          <Input type='radio' name={name} value={item} onChange={() => onChange(item)}/>
+          {decodeURI(item)}
         </Label>
       </FormGroup>
     ));
 
     return (
       <FormGroup>
-        <h2 className="title-radio">{question}</h2>
+        <h2 className="title-radio">{decodeURI(question)}</h2>
         {list}
       </FormGroup>
     )
