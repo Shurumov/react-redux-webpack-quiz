@@ -5,6 +5,7 @@ import { Route, Switch } from 'react-router-dom';
 import { ROUTES } from 'config/constants';
 // common
 const TestPage = loadable(() => import(/* webpackPrefetch: true */ '../pages/TestPage'));
+const QuestionPage = loadable(() => import(/* webpackPrefetch: true */ '../pages/QuestionPage'));
 
 class Router extends React.PureComponent {
     render() {
@@ -12,6 +13,7 @@ class Router extends React.PureComponent {
             <Switch>
                 {/*Common pages*/}
                 <Route exact path={ROUTES.TEST} render={(props) => <TestPage {...props} />} />
+                <Route exact path={ROUTES.QUESTIONS} render={(props) => <QuestionPage {...props} />} />
                 <Route render={(props) => <TestPage {...props} />} />
             </Switch>
         );

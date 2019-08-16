@@ -20,10 +20,12 @@ export class Radio extends Component {
     const {name, question, answers} = this.props;
 
     const list = answers.map((item) => (
-      <Label key={item.value}>
-        <Input type='radio' name={name} value={item.value}/>
-        {item.label}
-      </Label>
+      <FormGroup check>
+        <Label key={item.value}>
+          <Input type='radio' name={name} value={item.value}/>
+          {item.label}
+        </Label>
+      </FormGroup>
     ));
 
     return (

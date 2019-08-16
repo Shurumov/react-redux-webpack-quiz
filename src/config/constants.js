@@ -1,7 +1,14 @@
 export const API_METHODS = {
-  QUESTIONS: 'https://opentdb.com/api_config.php'
+  QUESTIONS: '/api.php?amount=10'
 };
 
+export const {
+  API_URL,
+  API_VERSION,
+  API_DOMAIN,
+} = process.env || {};
+
 export const ROUTES = {
-  TEST: '/test'
+  TEST: '/test',
+  QUESTIONS: '/questions',
 };

@@ -7,7 +7,7 @@ const {NODE_ENV, HOST, PORT, API_DOMAIN, API_VERSION} = envDev;
 
 console.info(`Project environment = "${NODE_ENV}"`);
 
-const API_URL = `${API_DOMAIN}/api/${API_VERSION}`;
+const API_URL = `${API_DOMAIN}/${API_VERSION}`;
 
 module.exports = merge(common, {
   mode: 'development',

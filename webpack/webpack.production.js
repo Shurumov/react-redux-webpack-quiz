@@ -15,7 +15,7 @@ const { NODE_ENV, API_DOMAIN, API_VERSION, UPLOAD_FILES_URL, UPLOAD_IMAGES_URL }
 
 console.info(`Project environment = "${NODE_ENV}"`);
 
-const API_URL = `${API_DOMAIN}/api/${API_VERSION}`;
+const API_URL = `${API_DOMAIN}/${API_VERSION}`;
 
 module.exports = merge(common, {
     mode: 'production',
