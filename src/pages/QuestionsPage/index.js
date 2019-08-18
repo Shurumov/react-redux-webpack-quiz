@@ -1,9 +1,11 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {getQuestions} from "store/actions/questions.actions";
+import {setResults} from "store/actions/results.actions";
 import {Radio, Button} from "components";
+import { ROUTES } from 'config/constants';
 
 import './questions-page.scss'
 
@@ -11,12 +13,14 @@ import './questions-page.scss'
     questions: questionsState.questions.data,
   }),
   (dispatch) => ({
-    getQuestions: bindActionCreators(getQuestions, dispatch)
+    getQuestions: bindActionCreators(getQuestions, dispatch),
+    setResults: bindActionCreators(setResults, dispatch)
   })
 )
 export default class QuestionPage extends Component {
   static propTypes = {
     getQuestions: PropTypes.func,
+    setResults: PropTypes.func,
   };
 
   constructor(props) {
@@ -28,7 +32,6 @@ export default class QuestionPage extends Component {
   }
 
   setValue = (value) => {
-    console.log(value);
     const newAnswers = this.state.answers;
     newAnswers[this.state.step] = value;
     this.setState(state => ({
@@ -48,14 +51,25 @@ export default class QuestionPage extends Component {
     })
   };
 
+  setResults = () => {
+    const { setResults, history = {}, questions =[] } = this.props;
+    const { answers = [] } = this.state;
+    const userResults = questions.map((item, index) => {
+      item['user_answer'] = answers[index];
+      return item;
+    });
+    setResults(userResults);
+    history.push(ROUTES.RESULTS)
+  };
+
   componentDidMount() {
     const {getQuestions} = this.props;
     getQuestions()
   }
 
   render() {
-    const {questions} = this.props;
-    const {step} = this.state;
+    const {questions = []} = this.props;
+    const {step, answers} = this.state;
     const answersList = (((questions || [])[step] || [])['incorrect_answers'] || []).concat((((questions || [])[step] || [])['correct_answer'] || ''));
     return (
       <div className="questions-page">
@@ -63,23 +77,36 @@ export default class QuestionPage extends Component {
           question={((questions || [])[step] || {}).question}
           name={((questions || [])[step] || {}).question}
           answers={answersList}
+          selectedAnswer={answers[step]}
           onChange={this.setValue}
         />
         <div className="questions-page__buttons">
-            <Button
-              type="button"
-              onClick={this.prevStep}
-              disabled={step === 0}
-            >
-              Back
+          {step === questions.length - 1 ? (
+            <Button addClass="button flex-1" onClick={this.setResults}>
+              Show results
             </Button>
+          ) : (
+            <Fragment>
+              { step > 0 &&  (
+                <Button
+                  type="button"
+                  onClick={this.prevStep}
+                  disabled={step === 0}
+                >
+                  Back
+                </Button>
+              )}
 
-          <Button
-            onClick={this.nextStep}
-            type="button"
-          >
-            Next
-          </Button>
+              <Button
+                addClass={step === 0 ? "flex-1" : ''}
+                onClick={this.nextStep}
+                type="button"
+                disabled={answers[step] === undefined}
+              >
+                Next
+              </Button>
+            </Fragment>
+          )}
         </div>
       </div>
     );

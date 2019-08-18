@@ -8,14 +8,16 @@ export class Button extends PureComponent {
     children: PropTypes.node,
     disabled: PropTypes.bool,
     onClick: PropTypes.func,
+    addClass: PropTypes.string,
   };
   render() {
-    const { children, type, disabled, onClick } = this.props;
+    const { children, type, disabled, onClick, addClass } = this.props;
     return (
       <button
         type={type}
         disabled={disabled}
         onClick={onClick}
+        className={addClass}
       >
         {children}
       </button>

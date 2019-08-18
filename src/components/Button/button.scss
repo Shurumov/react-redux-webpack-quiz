@@ -1,8 +1,7 @@
-button {
+button, .button {
   position: relative;
   cursor: pointer;
   border: none;
-  height: 40px;
   font-weight: bold;
   font-family: 'Montserrat', sans-serif;
   border-radius: 21px;
@@ -14,6 +13,7 @@ button {
   align-items: center;
   justify-content: center;
   padding: 11px 30px;
+  text-decoration: none;
   &:disabled {
     cursor: default;
     background-color: $gray;
@@ -25,5 +25,8 @@ button {
   &:focus {
     outline: none;
     background: $persian-red-light;
+  }
+  &_stretch {
+    flex: 1;
   }
 }

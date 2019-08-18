@@ -1,0 +1,11 @@
+.result-block {
+  &__correct {
+    background-color: rgba($green, .2);
+  }
+  &__incorrect {
+    background-color: rgba($danger, .2);
+  }
+  &__real {
+    background-color: rgba($blue, .81);
+  }
+}

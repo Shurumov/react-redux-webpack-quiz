@@ -1,10 +1,12 @@
 import { combineReducers } from 'redux';
 // reducers
 import questionsState from './questions.reducer';
+import resultsState from './results.reducer';
 
 
 const appReducer = combineReducers({
     questionsState: questionsState,
+    resultsState: resultsState,
 });
 
 const rootReducer = (state, action) => {
