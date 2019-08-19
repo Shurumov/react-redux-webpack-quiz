@@ -29,7 +29,6 @@ module.exports = merge(common, {
         NODE_ENV: JSON.stringify('development'),
         API_URL: JSON.stringify(API_URL),
         API_DOMAIN: JSON.stringify(API_DOMAIN),
-        API_VERSION: JSON.stringify(API_VERSION),
       },
     }),
     new webpack.HotModuleReplacementPlugin()

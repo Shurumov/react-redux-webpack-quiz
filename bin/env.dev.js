@@ -1,7 +1,7 @@
 'use strict';
 const defaultEnvVariables = {
     NODE_ENV: 'development',
-    HOST: '0.0.0.0',
+    HOST: 'localhost',
     PORT: 8020,
     API_DOMAIN: 'https://opentdb.com',
     API_VERSION: '',

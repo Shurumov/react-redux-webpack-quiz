@@ -2,7 +2,7 @@ import React, {Component, Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import {getQuestions, clearData} from "store/actions/questions.actions";
+import {getQuestions} from "store/actions/questions.actions";
 import {setResults} from "store/actions/results.actions";
 import {Radio, Button, Loader} from "components";
 import {ROUTES} from 'config/constants';
@@ -16,7 +16,6 @@ import './questions-page.scss'
   (dispatch) => ({
     getQuestions: bindActionCreators(getQuestions, dispatch),
     setResults: bindActionCreators(setResults, dispatch),
-    clearData: bindActionCreators(clearData, dispatch)
   })
 )
 export default class QuestionPage extends Component {
@@ -69,11 +68,6 @@ export default class QuestionPage extends Component {
   componentDidMount() {
     const {getQuestions, location={}} = this.props;
     getQuestions(location.search)
-  }
-
-  componentWillUnmount() {
-    const { clearData } = this.props;
-    clearData();
   }
 
   render() {
