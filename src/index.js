@@ -11,8 +11,8 @@ import Routes from 'pages/Routes';
 import * as axiosClient from 'utils/api/axiosClient';
 import {configureStore} from './store';
 
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/index.scss';
-
 
 export const MOUNT_NODE = document.getElementById('root');
 

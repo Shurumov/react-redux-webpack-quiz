@@ -1,2 +1,4 @@
 const quoteCode = /&quot;/g;
-export const decoder = (string = '') => string.replace(quoteCode, '"').replace('&#039;', "'");
+const apostrCode = /&#039;/g;
+const amdCode = /&amp;/g;
+export const decoder = (string = '') => string.replace(quoteCode, '"').replace(apostrCode, "'").replace(amdCode,"&");

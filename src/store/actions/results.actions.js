@@ -9,3 +9,9 @@ export function setResults(results) {
     payload: results
   }
 }
+
+export function clearResults() {
+  return {
+    type: RESULTS_ACTION_TYPES.RESULTS_CLEAR_STATE,
+  }
+}

@@ -1,16 +1,20 @@
-import React, {Component, Fragment} from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {ResultBlock, Select} from 'components';
+import {Button, ResultBlock, Select} from 'components';
 import {DIFFICULTY} from 'config/constants';
+import { clearResults } from 'store/actions/results.actions';
 
 import './results-page.scss';
+import {bindActionCreators} from "redux";
 
 @connect(
   ({resultsState}) => ({
     results: resultsState,
   }),
-  null
+  (dispatch) => ({
+    clearResults: bindActionCreators(clearResults, dispatch)
+  })
 )
 export default class ResultsPage extends Component {
   static propTypes = {
@@ -28,6 +32,16 @@ export default class ResultsPage extends Component {
     this.setState({
       difficulty: value
     })
+  };
+
+  tryAgain = () => {
+    const { history } = this.props;
+    history.push('/')
+  };
+
+  componentWillUnmount() {
+    const { clearResults } = this.props;
+    clearResults();
   }
 
   render() {
@@ -49,6 +63,15 @@ export default class ResultsPage extends Component {
             correctAnswer={item['correct_answer']}
           />
         ))}
+        <div className="results-page__button">
+          <Button
+            type="button"
+            addClass="flex-1"
+            onClick={this.tryAgain}
+          >
+            Try Again
+          </Button>
+        </div>
       </div>
     );
   }

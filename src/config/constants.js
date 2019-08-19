@@ -1,5 +1,5 @@
 export const API_METHODS = {
-  QUESTIONS: '/api.php?amount=2'
+  QUESTIONS: (params) => `/api.php${params}`
 };
 
 export const {
@@ -30,5 +30,43 @@ export const DIFFICULTY = [
   {
     value: 'hard',
     label: 'Hard'
+  },
+];
+
+export const CATEGORIES = [
+  {
+    value: '',
+    label: 'All'
+  },
+  {
+    value: 9,
+    label: 'General Knowledge'
+  },
+  {
+    value: 10,
+    label: 'Entertainment: Books'
+  },
+  {
+    value: 11,
+    label: 'Entertainment: Film'
+  },
+  {
+    value: 12,
+    label: 'Entertainment: Music'
+  }
+];
+
+export const TYPE = [
+  {
+    value: '',
+    label: 'Any Type'
+  },
+  {
+    value: 'multiple',
+    label: 'Multiple Choice'
+  },
+  {
+    value: 'boolean',
+    label: 'True / False'
   },
 ];

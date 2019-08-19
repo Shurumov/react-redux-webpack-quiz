@@ -18,8 +18,7 @@ export default function questionsState(state = initialState, action = {}) {
       };
 
     case QUESTIONS_ACTION_TYPES.QUESTIONS_CLEAR_STATE:
-      return initialState;
     default:
-      return state;
+      return initialState;
   }
 };

@@ -1,5 +1,7 @@
 import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
+import { decoder } from 'utils/decode';
+
 
 import './result-block.scss'
 
@@ -8,28 +10,29 @@ export class ResultBlock extends PureComponent {
     questionTitle: PropTypes.string,
     userAnswer: PropTypes.string,
     correctAnswer: PropTypes.string,
+    addClass: PropTypes.string,
   };
 
   render() {
-    const { questionTitle, userAnswer, correctAnswer } = this.props;
+    const { questionTitle, userAnswer, correctAnswer, addClass } = this.props;
     return (
-      <div className="result-block">
+      <div className={`result-block ${addClass}`}>
         <h3>
-          {questionTitle}
+          {decoder(questionTitle)}
         </h3>
         { userAnswer === correctAnswer ? (
-          <div className="result-block__correct">
-            {userAnswer}
+          <div className="result-block__answer result-block__correct">
+            {decoder(userAnswer)}
           </div>
         ) : (
           <Fragment>
-            <div className="result-block__incorrect">
+            <div className="result-block__answer result-block__incorrect">
               You answer: <br/>
-              {userAnswer}
+              {decoder(userAnswer)}
             </div>
-            <div className="result-block__real">
+            <div className=" result-block__answer result-block__real">
               Correct answer: <br/>
-              {correctAnswer}
+              {decoder(correctAnswer)}
             </div>
           </Fragment>
         )}

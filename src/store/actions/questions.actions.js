@@ -6,13 +6,13 @@ export const QUESTIONS_ACTION_TYPES = {
   QUESTIONS_CLEAR_STATE: 'QUESTIONS_CLEAR_STATE',
 };
 
-export function getQuestions(amount) {
+export function getQuestions(params) {
   return async (dispatch, getState, getAxios) => {
     const axios = getAxios();
 
     dispatch(changeProcessingState(true));
 
-    const response = await axios.get(API_METHODS.QUESTIONS);
+    const response = await axios.get(API_METHODS.QUESTIONS(params));
     dispatch(changeProcessingState(false));
 
     if (!response) {
@@ -37,5 +37,11 @@ export function setData(data, stateKeyForDataSaving) {
     payload: {
       data
     },
+  };
+}
+
+export function clearData() {
+  return {
+    type: QUESTIONS_ACTION_TYPES.QUESTIONS_CLEAR_STATE,
   };
 }
