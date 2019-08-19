@@ -1,5 +1,5 @@
 export const API_METHODS = {
-  QUESTIONS: '/api.php?amount=1'
+  QUESTIONS: '/api.php?amount=2'
 };
 
 export const {

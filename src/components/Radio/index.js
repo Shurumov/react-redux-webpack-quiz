@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {FormGroup, Label, Input} from 'reactstrap';
-
+import { decoder } from 'utils/decode';
 import './radio.scss';
 
 export class Radio extends Component {
@@ -31,14 +31,14 @@ export class Radio extends Component {
             value={item}
             onChange={() => onChange(item)}
           />
-          {decodeURI(item)}
+          {decoder(item)}
         </Label>
       </FormGroup>
     ));
 
     return (
       <FormGroup>
-        <h2 className="title-radio">{decodeURI(question)}</h2>
+        <h2 className="title-radio">{decoder(question)}</h2>
         {list}
       </FormGroup>
     )
